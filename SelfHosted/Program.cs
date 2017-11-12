@@ -1,4 +1,5 @@
-﻿using System;
+﻿using Microsoft.AspNetCore.Hosting;
+using System;
 
 namespace SelfHosted
 {
@@ -6,7 +7,11 @@ namespace SelfHosted
     {
         static void Main(string[] args)
         {
-            Console.WriteLine("Hello World!");
+            var host = new WebHostBuilder()
+                .UseKestrel()
+                .UseStartup<Startup>()
+                .Build();
+            host.Run();
         }
     }
 }
